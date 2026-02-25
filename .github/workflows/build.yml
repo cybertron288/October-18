@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+
+      - name: Build universal binary
+        run: |
+          xcodebuild -project October18.xcodeproj \
+            -scheme October18 \
+            -configuration Release \
+            -arch arm64 -arch x86_64 \
+            clean build \
+            SYMROOT="$PWD/Build"
+
+      - name: Verify universal binary
+        run: lipo -info Build/Release/October18.saver/Contents/MacOS/October18

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="200" fill="url(#bg)" rx="12"/>
+  <circle cx="720" cy="40" r="60" fill="#fb5c74" opacity="0.12"/>
+  <circle cx="780" cy="120" r="45" fill="#28cd56" opacity="0.10"/>
+  <circle cx="830" cy="60" r="35" fill="#5ac8fa" opacity="0.10"/>
+  <circle cx="760" cy="170" r="30" fill="#ffd60a" opacity="0.08"/>
+  <circle cx="850" cy="150" r="25" fill="#bf5af2" opacity="0.10"/>
+  <circle cx="130" cy="160" r="40" fill="#ff9f0a" opacity="0.08"/>
+  <circle cx="70" cy="80" r="30" fill="#5e5ce6" opacity="0.10"/>
+  <text x="450" y="105" text-anchor="middle" fill="#ffffff" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:64px;font-weight:700;letter-spacing:-1px;">October-18</text>
+  <text x="450" y="145" text-anchor="middle" fill="#8b949e" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;letter-spacing:2px;">macOS Screen Saver&nbsp;&nbsp;|&nbsp;&nbsp;Apple Silicon Native</text>
+</svg>
