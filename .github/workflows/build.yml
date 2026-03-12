@@ -9,8 +9,12 @@ on:
 jobs:
   build:
     runs-on: macos-14
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Select Xcode 16
         uses: maxim-lobanov/setup-xcode@v1
@@ -28,3 +32,26 @@ jobs:
 
       - name: Verify universal binary
         run: lipo -info Build/Release/October18.saver/Contents/MacOS/October18
+
+      - name: Package screen saver
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd Build/Release
+          zip -r "$GITHUB_WORKSPACE/October18.saver.zip" October18.saver
+
+      - name: Generate tag
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: tag
+        run: |
+          TAG="v1.0.0-build.$(date +%Y%m%d%H%M%S)"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          git tag "$TAG"
+          git push origin "$TAG"
+
+      - name: Create GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          files: October18.saver.zip
+          generate_release_notes: true
